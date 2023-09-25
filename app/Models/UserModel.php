@@ -13,7 +13,7 @@ class UserModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama', 'npm', 'id_kelas'];
+    protected $allowedFields    = ['nama', 'npm', 'id_kelas','updated_at'];
 
     // Dates
     protected $useTimestamps = true;
@@ -38,4 +38,14 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function saveUser($data){
+        $this->insert($data);
+    }
+
+ 
+    public function getUsers()
+    {
+        return $this->findAll();
+    }
 }

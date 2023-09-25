@@ -14,33 +14,45 @@
         <div class="card">
             <div class="card-header bg-primary text-white">Hello, Selamat Datang !!</div>
             <div class="card-body">
-                <?php if (!empty(session()->getFlashdata('error'))) : ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <h4>Periksa Entrian Form</h4>
-                        </hr />
-                        <?php echo session()->getFlashdata('error'); ?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php endif; ?>
                 <form action="<?= base_url('/user/store'); ?>" method="POST">
                     <?= csrf_field(); ?>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="nama">Nama</label>
-                        <input type="text" name="nama" class="form-control" value="<?= old('nama'); ?>" id="nama">
+                        <div class="col-sm-10">
+                            <input type="text" name="nama" class="form-control" value="<?= old('nama'); ?>" id="nama">
+                        </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="npm">NPM</label>
-                        <input type="npm" name="npm" class="form-control" id="" value="<?= old('npm'); ?>">
+                        <div class="col-sm-10">
+                            
+                            <input type="" name="npm" class="form-control <?= ($validation->hasError('npm')) ? 'is-invalid' : '' ; ?>" id="npm">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('npm'); ?>
+                            </div>
+                        </div>
                     </div>
- 
- 
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label for="kelas">Kelas</label>
-                        <input name="kelas" id="kelas" class="form-control" cols="3" rows="3"><?= old('kelas'); ?>
+                        <div class="col-sm-10">
+                            <select name="kelas" id="kelas" class="form-control" cols="3" rows="3">
+                                <?php
+                                foreach ($kelas as $item ) {
+                                ?>
+                                    <option value="<?= $item['id'] ?>">
+                                        <?= $item['nama_kelas'] ?>
+                                    </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
