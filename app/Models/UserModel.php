@@ -46,6 +46,6 @@ class UserModel extends Model
  
     public function getUsers()
     {
-        return $this->findAll();
+        return $this->join('kelas', 'kelas.id=user.id_kelas')->findAll();
     }
 }
