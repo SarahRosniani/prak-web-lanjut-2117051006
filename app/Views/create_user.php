@@ -8,8 +8,12 @@
                 <div class="card">
                     <div class="card-header bg-primary text-white">Hello, Selamat Datang !!</div>
                     <div class="card-body">
-                        <form action="<?= base_url('/user/store'); ?>" method="POST">
+                        <form action="<?= base_url('/user/store'); ?>" method="POST" enctype ="multipart/form-data">
                             <?= csrf_field(); ?>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text"  for="foto">Upload</label>
+                                <input type="file" class="form-control" name='foto' id="foto">
+                            </div>
                             <div class="form-group row">
                                 <label for="nama">Nama</label>
                                 <div class="col-sm-10">

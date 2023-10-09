@@ -2,32 +2,23 @@
 
 <?= $this->section('content')?>
     <div>
-        <header class="bg-primary">
+        <header class="bg-primary-subtle">
         <div class="container">
                 <h2>Data User</h2>
-                <p>Anda dapat mengelola data user</p>
+                
                 <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>NPM</th>
-                            <th>Kelas</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            <tr>
-                                
-                                <td><?= $nama ?></td>
-                                <td><?= $npm  ?></td>
-                                <td><?= $kelas ?></td>
-                                <td><a href="" class="btn btn-danger">Hapus</a>
-                                    <a href="" class="btn btn-warning">Detail</a>
-                                    <a href="" class="btn btn-primary">Ubah</a>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
+                    
+                           <div class="container">
+                                <div class="w-100 d-grid border gap-2" style="height: 100vh; place-content: center;">
+                                    <div class="w-50 text-center border mx-auto">
+                                        <img src="<?= $user['foto'] ?? '<default-foto>' ?>"  alt="">
+                                    </div>
+                                    <center><div class="..."><?= $user['nama'] ?></div>
+                                    <center><div class="..."><?= $user['npm'] ?></div>
+                                    <center><div class="..."><?= $user['nama_kelas'] ?></div>
+                                </div>
+                            </div>
+                   
                 </table>
             </div>  
         </table>
