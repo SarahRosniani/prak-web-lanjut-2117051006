@@ -11,13 +11,14 @@
             <div class="row">
     <center><div class="card border-danger" style="max-width: 600px;">
             <div class="card-header bg-primary">
-                
+               
                 <h2> Tabel User </h2>
             </div> 
             <div class="card-body ">  
                 <table class="table">
                                 <thead>
                                     <tr class="table-dark">
+                                        
                                         <th>ID</th>
                                         <th>Nama</th>
                                         <th>NPM</th>
@@ -34,9 +35,12 @@
                                             <td><?= $user['nama'] ?></td>
                                             <td><?= $user['npm'] ?></td>
                                             <td><?= $user['nama_kelas'] ?></td>
-                                            <td><a href="" class="btn btn-danger">Hapus</a>
-                                                <a href="" class="btn btn-warning">Detail</a>
-                                                <a href="" class="btn btn-primary">Ubah</a>
+                                            <td>
+                                                
+                                                <a href="<?= base_url('user/' . $user['id']) ?>">Detail </a>
+                                                <a href="" class="btn btn-primary">Edit</a>
+                                                <button type ="button" class="btn btn-danger">Delete</button>
+                                                
                                             </td>
                                         </tr>
                                     <?php
@@ -44,6 +48,7 @@
                                     ?>
                                 </tbody>
                             </table>
+                            <a href="<?= base_url(relativePath: 'user/create')?>" class="btn btn-primary">Tambah Data</a>
                     </div>
                 <div class="card-footer">
                 Table list Uer 

@@ -54,6 +54,16 @@ class UserController extends BaseController
     public function store()
     {
        
+        $path = 'assets/uploads/img/' ;
+
+        $foto = $this->request->getFile('foto');
+        
+        $name = $foto->getRandomName();
+        
+
+        if($foto->move($path, $name)){
+            $foto = base_url($path . $name);
+        }
 
         if(!$this->validate([
             'npm' => [
@@ -72,6 +82,7 @@ class UserController extends BaseController
             'nama' => $this->request->getVar('nama'),
             'id_kelas' => $this->request->getVar('kelas'),
             'npm' => $this->request->getVar('npm'),
+            'foto' => $foto
         ]);
 
         $data = [
@@ -84,5 +95,17 @@ class UserController extends BaseController
 
         //return view('profile', $data);
         return redirect()->to('/user');
+    }
+
+
+    public function show($id){
+        $user = $this->userModel->getUsers($id);
+
+        $data = [
+            'title'  => 'Profile',
+            'user'      => $user,
+        ];
+
+        return view('profile', $data);
     }
 }
